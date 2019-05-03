@@ -1,7 +1,7 @@
 ---
 title: How to make money online?
 date: 2019-04-27 21:33:29
-tags:
+tags: business
 ---
 I have been working as a software engineer for more than 10 years. As I have a full-time job, it is not really a problem to make the money that is needed to support my family.
 
