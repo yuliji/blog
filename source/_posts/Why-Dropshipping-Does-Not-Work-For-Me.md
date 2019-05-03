@@ -4,6 +4,8 @@ date: 2019-05-03 17:36:41
 tags: business
 ---
 
+![](zan-ilic-1446008-unsplash.jpg)
+Photo by Zan Ilic on Unsplash
 > Drop shipping is a supply chain management method in which the retailer does not keep goods in stock but instead transfers the customer orders and shipment details to either the manufacturer, another retailer, or a wholesaler, who then ships the goods directly to the customer.
 > (Wikipedia)
 
