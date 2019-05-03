@@ -4,8 +4,9 @@ date: 2019-05-03 17:36:41
 tags: business
 ---
 
-![](zan-ilic-1446008-unsplash.jpg)
+![](/images/zan-ilic-1446008-unsplash.jpg)
 Photo by Zan Ilic on Unsplash
+
 > Drop shipping is a supply chain management method in which the retailer does not keep goods in stock but instead transfers the customer orders and shipment details to either the manufacturer, another retailer, or a wholesaler, who then ships the goods directly to the customer.
 > (Wikipedia)
 
@@ -39,7 +40,7 @@ In theory, you can just spend $10 to get a cheap domain name and spend another $
 
 But in fact, no one will notice your online store. Actually, you would hope no one notices it because it is so ugly that it will become a joke among your friends.
 
-According to some drop a [shipping expert](https://www.dropshipdownunder.com.au/blog/the-costs-of-starting-a-dropshipping-business), you need $500 - $1000 to build a decent online store. This is just a start. To get enough visitors to bring you sustainable profit, you need to continuously spend money (about $300) in marketing every month. Furthermore, you must be patient because you may not have any profit for the first 3-4 months even if you spend that much money.
+According to some drop a [drop shipping expert](https://www.dropshipdownunder.com.au/blog/the-costs-of-starting-a-dropshipping-business), you need $500 - $1000 to build a decent online store. This is just a start. To get enough visitors to bring you sustainable profit, you need to continuously spend money (about $300) in marketing every month. Furthermore, you must be patient because you may not have any profit for the first 3-4 months even if you spend that much money.
 
 # Just not for me
 
