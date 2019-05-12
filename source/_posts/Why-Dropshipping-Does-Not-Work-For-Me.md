@@ -26,7 +26,7 @@ We shall bear in mind that anyone who tells you how successful he/she is in drop
 
 # It requires time and experience
 
-But don't take me wrong. I still believe drop shipping is a good business model if you want to have a __lean startup__. But you can be successful only if you have the knowledge and experience required and you are willing to spend enough time and effort in it.
+But don't take me wrong. I still believe drop shipping is a good business model if you want to have a [__lean startup__](https://amzn.to/2Jy3NTKt). But you can be successful only if you have the knowledge and experience required and you are willing to spend enough time and effort in it.
 
 As I understand, doing drop shipping is actually doing marketing and customer service. Neither of these two jobs is easy. They both require experience and time.
 
