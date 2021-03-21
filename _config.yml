@@ -8,12 +8,12 @@ subtitle:
 description:
 keywords:
 author: Liji Yu
-language: ['en', 'zh-cn']
+language: ['zh-cn', 'en']
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://blog.geekleeg.com
+url: https://yuliji.github.io/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:

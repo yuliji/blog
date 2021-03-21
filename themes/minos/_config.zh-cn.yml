@@ -39,12 +39,12 @@ toc: false
 
 # Share plugin settings.
 share:
-  type: sharethis
+  type:
   install_url:
 
 # Comment plugin settings.
 comment:
-  type: disqus
+  type:
   shortname:
 
 # Other plugins and their settings.
