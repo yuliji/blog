@@ -14,7 +14,7 @@ open_graph:
 # logo:
 #   text: <logo string>
 logo:
-  text: "GeekLeeg"
+  text: "刀十一"
 
 article:
   # Show word count and estimated reading time.
@@ -24,7 +24,7 @@ article:
 
 # Navigation bar menu links.
 menu:
-  归档: /zh-cn/archives
+  归档: /archives
   # 生活: /zh-cn/categories/LifeStyle
   # 音乐: /zh-cn/categories/Music
   # Technology: /zh-cn/categories/Technology
