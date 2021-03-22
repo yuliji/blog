@@ -30,6 +30,12 @@ main() {
   hexo generate
   rsync -v -a --delete --exclude .git "${REPO_DIR}"/public/ "${page_dir}"
   >&2 echo "synced to ${page_dir}"
+  local head_commit
+  head_commit=$(git rev-parse --short HEAD)
+  pushd "${page_dir}"
+  git add .
+  git commit -am "sync ${head_commit}"
+  git push
 }
 
 main "$@"
