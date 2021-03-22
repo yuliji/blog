@@ -1,7 +1,7 @@
 ---
 title: 好用的运维相关Python库2：IPy
 date: 2021-03-21 11:59:38
-tags:
+tags: Python
 ---
 今天介绍一个很好用的运维相关Python库`IPy`。这个库提供了很多强大的处理IP地址相关的功能。
 

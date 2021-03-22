@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 刀十一
+title: 刀十一的DevOps小站
 subtitle:
 description:
 keywords:
 author: 刀十一
-language: ['zh-cn', 'en']
+language: ['zh-CN']
 timezone:
 
 # URL
@@ -73,7 +73,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: minos
+theme: maupassant
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

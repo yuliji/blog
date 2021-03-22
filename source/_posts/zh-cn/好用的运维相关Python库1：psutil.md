@@ -1,7 +1,7 @@
 ---
 title: 好用的运维相关Python库1：psutil
 date: 2021-03-21 11:54:38
-tags:
+tags: Python
 ---
 由于Bash实在太恶心，很多运维工程师开始使用Python代替Bash写各种脚本。
 
