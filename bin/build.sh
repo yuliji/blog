@@ -42,7 +42,7 @@ main() {
     exit 0
   fi
 
-  pushd "${SCRIPT_DIR}"/../ > /dev/null
+  pushd "${REPO_DIR}" > /dev/null
   node_modules/hexo-cli/bin/hexo clean
   node_modules/hexo-cli/bin/hexo generate
   rm -rf dist/public.tar.gz
