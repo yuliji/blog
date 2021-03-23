@@ -41,7 +41,7 @@ main() {
     exit 0
   fi
 
-  pushd "${SCRIPT_DIR}"/../
+  pushd "${SCRIPT_DIR}"/../ > /dev/null
   hexo clean
   hexo generate
   rm -rf dist/public.tar.gz
