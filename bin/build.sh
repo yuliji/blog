@@ -43,8 +43,8 @@ main() {
   fi
 
   pushd "${SCRIPT_DIR}"/../ > /dev/null
-  hexo clean
-  hexo generate
+  node_modules/hexo-cli/bin/hexo clean
+  node_modules/hexo-cli/bin/hexo generate
   rm -rf dist/public.tar.gz
   tar -czvf dist/public.tar.gz public
   gh release create "${head_commit}" ./dist/public.tar.gz -t '' -n ''

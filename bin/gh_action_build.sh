@@ -24,7 +24,7 @@ main() {
     exit
   fi
   pushd "${REPO_DIR}" > /dev/null
-  npm install hexo-cli -g
+  npm install hexo-cli
   npm install
   bin/build.sh
 }
