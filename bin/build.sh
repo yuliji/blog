@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# This script does this and that.
+# Build public assets and create a github release
 
 set -eu
 set -o pipefail
@@ -19,23 +19,23 @@ EOF
 }
 
 main() {
-  local page_dir=$1
   if [[ "$*" =~ ^(-h|--help)$ ]]; then
     usage
     exit
   fi
+  if [[ -n $(git status -s) ]]; then
+    echo "Error: work treen is not clean"
+    exit 1
+  fi
 
+  local head_commit
+  head_commit=$(git rev-parse --short HEAD)
   pushd "${SCRIPT_DIR}"/../
   hexo clean
   hexo generate
-  rsync -v -a --delete --exclude .git "${REPO_DIR}"/public/ "${page_dir}"
-  >&2 echo "synced to ${page_dir}"
-  local head_commit
-  head_commit=$(git rev-parse --short HEAD)
-  pushd "${page_dir}"
-  git add .
-  git commit -am "sync ${head_commit}"
-  git push
+  rm -rf dist/public.tar.gz
+  tar -czvf dist/public.tar.gz public
+  gh release create "${head_commit}" ./dist/public.tar.gz -t '' -n ''
 }
 
 main "$@"
