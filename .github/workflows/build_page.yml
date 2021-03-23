@@ -30,4 +30,4 @@ jobs:
         env:
           TOKEN: ${{ secrets.TOKEN }}
 
-        run: echo $TOKEN
+        run: ${GITHUB_WORKSPACE}/build.sh
