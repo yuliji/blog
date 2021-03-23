@@ -28,8 +28,19 @@ main() {
     exit 1
   fi
 
+
+
   local head_commit
+  local latest
+
   head_commit=$(git rev-parse --short HEAD)
+  latest="$(gh release list -L 1 | awk '{print $1}')" # get the latest release
+
+  if [[ "${latest}" == "${head_commit}" ]]; then
+    echo "no new commit, quit without building..."
+    exit 0
+  fi
+
   pushd "${SCRIPT_DIR}"/../
   hexo clean
   hexo generate
