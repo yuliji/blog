@@ -19,7 +19,7 @@ EOF
 main() {
   local page_dir=$1
   local latest # latest release
-  latest="$(gh release list -L 1 | awk '{print $1}')" # get the latest release
+  latest="$(gh release list -R yuliji/blog -L 1 | awk '{print $1}')" # get the latest release
   gh release download "${latest}" -R yuliji/blog -p public.tar.gz
   tar -xzvf ./public.tar.gz
   mv ./public/* "${page_dir}"
