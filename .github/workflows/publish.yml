@@ -27,6 +27,7 @@ jobs:
         with:
           repository: 'yuliji/yuliji.github.io'
           path: 'pages'
+          ssh-key: ${{ secrets.PAGE_REPO_SSH_KEY }}
 
       - uses: actions/checkout@v2
         with:
