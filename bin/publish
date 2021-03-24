@@ -24,6 +24,8 @@ main() {
   tar -xzvf ./public.tar.gz
   rsync -v -a --delete --exclude .git ./public/ "${page_dir}"
   pushd "${page_dir}" > /dev/null
+  git config --global user.email "yuliji1010@gmail.com"
+  git config --global user.name "yuliji"
   git commit -am "sync ${latest}"
   git push
 }
