@@ -44,9 +44,11 @@ main() {
   pushd "${REPO_DIR}" > /dev/null
   node_modules/hexo-cli/bin/hexo clean
   node_modules/hexo-cli/bin/hexo generate
+  ls -l public/
   rm -rf dist/public.tar.gz
   mkdir -p dist
   tar -czvf dist/public.tar.gz public
+  ls -l dist/
   gh release create "${head_commit}" ./dist/public.tar.gz -t '' -n ''
 }
 
