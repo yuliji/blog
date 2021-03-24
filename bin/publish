@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+#
+# This script does this and that.
+
+set -eu
+set -o pipefail
+set -x
+
+PROG=$(basename "$0")
+
+# Prints a small usage help. This is called on `--help` and on parameter validation errors.
+# Syntax follows http://docopt.org/.
+usage() {
+  cat <<EOF
+${PROG} <page_dir>
+EOF
+}
+
+main() {
+  local page_dir=$1
+  local latest # latest release
+  latest="$(gh release list -L 1 | awk '{print $1}')" # get the latest release
+  gh release download "${latest}" -R yuliji/blog -p public.tar.gz
+  tar -xzvf ./public.tar.gz
+  mv ./public/* "${page_dir}"
+  pushd "${page_dir}" > /dev/null
+  git commit -am "sync ${latest}"
+  git push
+}
+
+main "$@"

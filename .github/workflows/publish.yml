@@ -39,4 +39,4 @@ jobs:
           TOKEN: ${{ secrets.TOKEN }}
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
-        run: ls ${GITHUB_WORKSPACE}
+        run: ${GITHUB_WORKSPACE}/blog/bin/publish ${GITHUB_WORKSPACE}/pages/
