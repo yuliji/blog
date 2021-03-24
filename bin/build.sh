@@ -33,7 +33,7 @@ main() {
   local head_commit
   local latest
 
-  echo "${TOKEN}" | gh auth login --with-token
+  # echo "${TOKEN}" | gh auth login --with-token
   head_commit=$(git rev-parse --short HEAD)
   latest="$(gh release list -L 1 | awk '{print $1}')" # get the latest release
 
