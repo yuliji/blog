@@ -28,6 +28,11 @@ jobs:
           repository: 'yuliji/yuliji.github.io'
           path: 'pages'
 
+      - uses: actions/checkout@v2
+        with:
+          repository: 'yuliji/blog'
+          path: 'blog'
+
       # Runs a single command using the runners shell
       - name: Publish pages
         env:
