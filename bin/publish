@@ -24,9 +24,8 @@ main() {
   tar -xzvf ./public.tar.gz
   rsync -v -a --delete --exclude .git ./public/ "${page_dir}"
   pushd "${page_dir}" > /dev/null
-  git status
-  # git commit -am "sync ${latest}"
-  # git push
+  git commit -am "sync ${latest}"
+  git push
 }
 
 main "$@"
