@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Publish pages
+name: Publish Pages
 
 # Controls when the action will run.
 on:
@@ -34,7 +34,6 @@ jobs:
       # Runs a single command using the runners shell
       - name: Publish pages
         env:
-          TOKEN: ${{ secrets.TOKEN }}
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
         run: ${GITHUB_WORKSPACE}/blog/bin/publish ${GITHUB_WORKSPACE}/pages/
