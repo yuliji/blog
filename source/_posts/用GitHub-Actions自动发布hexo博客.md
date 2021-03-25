@@ -71,5 +71,4 @@ Hexo生成静态文件后，我会把这些文件提交到[GitHub Pages](https:/
 
 这样，我只需要把最新的文章提交到Hexo库的master分支，新文章就自动发布到Github Pages了。
 
-![每次push自动运行](https://raw.githubusercontent.com/yuliji/images/main/img20210325220017.png)
-
+![每次push自动运行](https://raw.githubusercontent.com/yuliji/images/main/imgauto.png)

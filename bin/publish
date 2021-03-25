@@ -25,6 +25,7 @@ main() {
   pushd "${page_dir}" > /dev/null
   git config --global user.email "yuliji1010@gmail.com"
   git config --global user.name "yuliji"
+  git add .
   git commit -am "sync ${latest}"
   git push
 }
