@@ -21,7 +21,7 @@ Hexo生成静态文件后，我会把这些文件提交到[GitHub Pages](https:/
 之前，我一直是在自己电脑上手动完成发布博客的操作，流程如下：
 
 * 在`Hexo库`里写博客文章 (https://github.com/yuliji/blog)
-* `hexo generate`生成静态文件
+* 用`hexo generate`生成静态文件
 * 把静态文件复制到`Pages库` (https://github.com/yuliji/yuliji.github.io)
 * 在`Pages库`里`commit`并`push`代码，发布。
 
@@ -37,13 +37,15 @@ Hexo生成静态文件后，我会把这些文件提交到[GitHub Pages](https:/
 * `Build Pages`由`master`分支的`push`事件触发。他的主要功能就是用`hexo generate`生成静态文件，把这些静态文件打包、创建并上传到一个新的[Github Release](https://docs.github.com/en/github/administering-a-repository/about-releases)里
 * 创建release的操作触发`Publish Pages`，这个workflow会clone我的`Pages库`，下载最新的release里的静态文件包，解压到`Pages库`，commit & push
 
+![整体思路](https://raw.githubusercontent.com/yuliji/images/main/img20210325214822.png)
+
 具体的实现步骤如下：
 1. 创建`build.sh`脚本。该脚本负责生成静态文件、打包、上传。这个脚本在本地电脑也可以运行。
 1. 创建`gh_action_build.sh`脚本。该脚本在Github Action里运行。主要是调用`build.sh`，但是事先要安装一些必要的npm库。
-1. 在[]https://github.com/settings/tokens）获取一个Personal access token。因为我们的`build.sh`里用到了Github CLI工具`gh`。这个命令需要用到这个token来授权。
+1. 在https://github.com/settings/tokens 获取一个Personal access token。因为我们的`build.sh`里用到了Github CLI工具`gh`。这个命令需要用到这个token来授权。
 1. 把这个Personal access token，添加到`Hexo库`的secrets里。
-1. 创建YAML文件定义`Build Pages`，这边主要功能就是注入上边的那个token然后调用`gh_action_build.sh`。具体代码在[这里](https://github.com/yuliji/blog/blob/master/.github/workflows/build_page.yml)
-
+![添加secrets](https://raw.githubusercontent.com/yuliji/images/main/imgsecrets.png)
+1. 创建YAML文件定义`Build Pages`，这边主要功能就是注入上边的那个token然后调用`gh_action_build.sh`。完整代码在[这里](https://github.com/yuliji/blog/blob/master/.github/workflows/build_page.yml)
 ```yaml
 - name: Generate pages
   env:
@@ -51,30 +53,23 @@ Hexo生成静态文件后，我会把这些文件提交到[GitHub Pages](https:/
 
   run: ${GITHUB_WORKSPACE}/bin/gh_action_build.sh # 调用脚本
 ```
+1. 创建`publish`脚本。该脚本下载最新的release中的静态文件包，解压到`Pages库`，commit & push。
+1. 用`ssh-keygen`创建一对秘钥。因为我们在`Hexo库`的actions里操作`Pages库`，所以需要授权actions的git命里来修改`Pages库`
+1. 把上边生成的公钥加到`Pages库`的deploy key里，并赋予写权限。
+![添加deploy key](https://raw.githubusercontent.com/yuliji/images/main/imgdeploykey.png)
+1. 把上边生成的私钥加到`Hexo库`的secrets里。
+1. 创建YAML文件定义`Publish Pages`。这个workflow里需要clone两个代码库，然后调用`publish`脚本。其中`Pages库`的ssh key需要用上边设置的私钥。完整代码在[这里](https://github.com/yuliji/blog/blob/master/.github/workflows/publish.yml)
+```yaml
+- uses: actions/checkout@v2
+  with:
+    repository: 'yuliji/yuliji.github.io'
+    path: 'pages'
+    ssh-key: ${{ secrets.PAGE_REPO_SSH_KEY }}  # 用有写权限的key操作Pages库
+```
 
-这两个workflow的定义其实很简单，感兴趣的朋友可以在[这里](https://github.com/yuliji/blog/tree/master/.github/workflows)查看源代码。
-
-Build Pages的定义文件build_page.yml主要就是注入了GITHUB_TOKEN然后调用了gh_action_build.sh这个脚本。
-
-gh_action_build.sh安装了一些npm包，然后调用了build.sh这个脚本。
-
-build.sh才是真正的脚本。
-
-这里需要注意的是，build.sh用到了Github CLI工具gh。gh是需要认证的，之前注入的GITHUB_TOKEN就是用来认证的。如果没有这个GITHUB_TOKEN，运行gh之前要进行交互式的登陆操作。
-
-这个在https://github.com/settings/tokens生成，在项目设定的Secrets里添加到项目里。
-
-Publish Pages这个workflow会clone Github Pages代码仓库，然后调用publish脚本。
-
-publish脚本下载最新release里的静态文件包，解压到Github Pages代码仓库，然后commit & push
-
-由于这个workflow是在Hexo代码仓库里push pages仓库，所以需要配置相应的权限。
-
-具体方法是在pages仓库里获取Deploy keys，这个key需要有写权限。
-
-然后把这个key加到Hexo仓库的secrets里。
-
-最后在Publish Pages的定义里指明用这个key来操作pages库。
+## 完成
 
 这样，我只需要把最新的文章提交到Hexo库的master分支，新文章就自动发布到Github Pages了。
+
+![每次push自动运行](https://raw.githubusercontent.com/yuliji/images/main/img20210325220017.png)
 
