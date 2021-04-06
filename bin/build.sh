@@ -23,6 +23,7 @@ main() {
     usage
     exit
   fi
+  git status
   if [[ -n $(git status -s) ]]; then
     echo "Error: work treen is not clean"
     exit 1
